@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: canary-demo
+  annotations:
+    external-dns.alpha.kubernetes.io/target: ingress-internal.infra.dreamteam.internal
+    kubernetes.io/ingress.class: traefik-internal
+spec:
+  rules:
+  - host: canary.infra.dreamteam.internal
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: canary-demo
+          servicePort: 80
