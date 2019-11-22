@@ -8,13 +8,10 @@ spec:
   metrics:
   - name: success-rate
     interval: 20s
-    successCondition: result[0] > 0.95
+    successCondition: result[0] = 0
     provider:
       prometheus:
         address: http://prometheus-operator-prometheus.monitoring:9090
         query: >+
-          sum(
-            rate(traefik_backend_requests_total{backend="{{args.backend}}",code!~"[4-5].*"}[40s]))
-            /
-            sum(rate(traefik_backend_requests_total{backend="{{args.backend}}"}[40s])
-          )
+          rate(traefik_backend_requests_total{backend="{{args.backend}}",code!~"[4-5].*"}[40s])
+
