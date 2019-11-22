@@ -8,10 +8,10 @@ spec:
   metrics:
   - name: success-rate
     interval: 10s
-    successCondition: result == 0
+    successCondition: result[0] == 0
     provider:
       prometheus:
         address: http://prometheus-operator-prometheus.monitoring:9090
         query: >+
-          rate(traefik_backend_requests_total{backend="{{args.backend}}",code=~"[4-5].*"}[10s])
+          sum(rate(traefik_backend_requests_total{backend="canary.infra.dreamteam.internal/",code=~"[4-5].*"}[40s]))
 
