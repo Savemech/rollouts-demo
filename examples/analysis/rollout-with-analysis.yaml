@@ -19,20 +19,20 @@ spec:
       steps:
       - setWeight: 40
       - pause:
-          duration: 20
+          duration: 10
       - setWeight: 60
       - pause:
-          duration: 20
+          duration: 10
       - setWeight: 80
       - pause:
-          duration: 20
+          duration: 10
   template:
     metadata:
       labels:
         app: canary-demo
     spec:
       containers:
-      - image: argoproj/rollouts-demo:green
+      - image: argoproj/rollouts-demo:blue
         imagePullPolicy: Always
         name: canary-demo
         ports:
