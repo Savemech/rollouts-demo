@@ -8,7 +8,7 @@ spec:
   metrics:
   - name: success-rate
     interval: 10s
-    successCondition: result[0] == 0
+    successCondition: result == 0
     provider:
       prometheus:
         address: http://prometheus-operator-prometheus.monitoring:9090
