@@ -13,8 +13,8 @@ spec:
       analysis:
         templateName: success-rate
         args:
-        - name: service
-          value: canary-demo
+        - name: backend
+          value: "canary.infra.dreamteam.internal/"
       canaryService: canary-demo-preview
       steps:
       - setWeight: 40
